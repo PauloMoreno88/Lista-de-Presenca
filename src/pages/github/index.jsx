@@ -48,7 +48,9 @@ export const Github = () => {
       <ul>
         {repo.map((value) => (
           <li>
-            <a href={value.html_url}>{value.name}</a>
+            <a target="_blank" href={value.html_url}>
+              {value.name}
+            </a>
           </li>
         ))}
       </ul>
