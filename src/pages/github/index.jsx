@@ -56,7 +56,7 @@ export const Github = () => {
       </ul>
       <br />
       <Link to="/" className="button">
-        Back
+        Voltar
       </Link>
     </div>
   );
