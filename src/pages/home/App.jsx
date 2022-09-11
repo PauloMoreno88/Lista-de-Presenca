@@ -1,13 +1,22 @@
 import { useState, useEffect } from "react";
 import { Card } from "../../components/Card";
+import { Link } from "react-router-dom";
 
 import "./App.css";
 
 function App() {
   const [user, setUser] = useState("");
   const [listUser, setListUser] = useState([]);
-  const [userGit, setUserGit] = useState({ name: "", avatar: "" });
-  const url = "https://api.github.com/users/Ericksouza94";
+  const [userGit, setUserGit] = useState({
+    name: "",
+    avatar: "",
+    followers: "",
+    repo: "",
+  });
+  const [repo, setRepo] = useState([]);
+  const github = "ericksouza94";
+  const url = "https://api.github.com/users/" + github;
+  console.log(url);
 
   const handleAddUser = () => {
     if (user === "") {
@@ -34,6 +43,8 @@ function App() {
       setUserGit({
         name: data.name,
         avatar: data.avatar_url,
+        followers: data.followers,
+        repo: data.repos_url,
       });
     }
 
@@ -42,10 +53,17 @@ function App() {
 
   return (
     <div className="App">
+      {/* <ul>
+        {repo.map((v) => (
+          <li>{v.name}</li>
+        ))}
+      </ul> */}
       <header>
         <h2 className="title">Lista de Presença</h2>
         <div>
-          <p>{userGit.name}</p>
+          <Link className="link" to="/github">
+            {userGit.name}
+          </Link>
           <img src={userGit.avatar} alt="foto" />
         </div>
       </header>
